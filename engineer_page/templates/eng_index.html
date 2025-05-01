@@ -4,87 +4,98 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Software Engineer Landing Page</title>
+  <title>Luiz, the Engineer</title>
   <style>
-    body {
+    :root {
+      --bg: #f9f9f9;
+      --text: #222;
+      --accent: #005f73;
+      --card: #ffffff;
+    }
+
+    * {
+      box-sizing: border-box;
       margin: 0;
-      font-family: Arial, sans-serif;
-      background-color: #f4f4f4;
-      color: #333;
-      line-height: 1.6;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      padding: 2rem;
     }
 
     header {
-      background-color: #1a1a1a;
-      color: white;
-      padding: 2rem;
       text-align: center;
+      margin-bottom: 3rem;
     }
 
-    .container {
-      max-width: 1200px;
-      margin: auto;
+    header h1 {
+      font-size: 2.5rem;
+      color: var(--accent);
+      letter-spacing: 1px;
+    }
+
+    .card {
+      max-width: 900px;
+      background-color: var(--card);
+      margin: 0 auto;
       padding: 2rem;
-    }
-
-    .profile-section {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+      border-radius: 16px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
     }
 
     .profile-image {
-      max-width: 100%;
-      width: 300px;
+      float: left;
+      width: 320px;
       height: auto;
-      margin-bottom: 2rem;
-      border-radius: 8px;
+      margin-right: 2rem;
+      margin-bottom: 1rem;
+      border-radius: 12px;
+      object-fit: cover;
     }
 
     .description {
-      background-color: white;
-      padding: 2rem;
-      border-radius: 8px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-      width: 100%;
+      font-size: 1.125rem;
+      line-height: 1.9;
+      overflow: hidden; /* clears float if needed */
     }
 
-    @media(min-width: 768px) {
-      .profile-section {
-        flex-direction: row;
-        gap: 2rem;
-      }
+    .description p {
+      margin-bottom: 1.5rem;
+    }
 
+    @media (max-width: 768px) {
       .profile-image {
-        width: 300px;
-        height: auto;
-        flex-shrink: 0;
-      }
-
-      .description {
-        flex-grow: 1;
+        float: none;
+        display: block;
+        margin: 0 auto 2rem auto;
       }
     }
   </style>
 </head>
 <body>
   <header>
-    <h1>Software Engineer</h1>
+    <h1>Hi, I'm Luiz!</h1>
   </header>
 
-  <div class="container">
-    <section class="profile-section">
+  <div class="card">
+    <div class="description">
       <img 
-        src="{% static 'portrait.jpg' %}"
+        src="{% static 'portrait.jpg' %}" 
         alt="Profile Picture" 
         class="profile-image" 
         width="3000" 
         height="4500"
       />
-      <div class="description">
-        asdasdasd
-      </div>
-    </section>
+      {% for paragraph in paragraphs %}
+      <p>{{ paragraph }}</p>
+      {% endfor %}
+      <a href="#">
+        <p>...but feel free to ask!</p>
+      </a>
+    </div>
   </div>
 </body>
 </html>

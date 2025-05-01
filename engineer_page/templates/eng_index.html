@@ -1,0 +1,90 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Software Engineer Landing Page</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    header {
+      background-color: #1a1a1a;
+      color: white;
+      padding: 2rem;
+      text-align: center;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: auto;
+      padding: 2rem;
+    }
+
+    .profile-section {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .profile-image {
+      max-width: 100%;
+      width: 300px;
+      height: auto;
+      margin-bottom: 2rem;
+      border-radius: 8px;
+    }
+
+    .description {
+      background-color: white;
+      padding: 2rem;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      width: 100%;
+    }
+
+    @media(min-width: 768px) {
+      .profile-section {
+        flex-direction: row;
+        gap: 2rem;
+      }
+
+      .profile-image {
+        width: 300px;
+        height: auto;
+        flex-shrink: 0;
+      }
+
+      .description {
+        flex-grow: 1;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Software Engineer</h1>
+  </header>
+
+  <div class="container">
+    <section class="profile-section">
+      <img 
+        src="{% static 'portrait.jpg' %}"
+        alt="Profile Picture" 
+        class="profile-image" 
+        width="3000" 
+        height="4500"
+      />
+      <div class="description">
+        asdasdasd
+      </div>
+    </section>
+  </div>
+</body>
+</html>

@@ -5,6 +5,4 @@ from django.http import HttpRequest
 
 
 def index(r: HttpRequest):
-    with open("eng_description.txt", "r") as description_file:
-        description = description_file.read()
-    return render(r, "index.html", {"eng_description": description})
+    return render(r, "index.html")

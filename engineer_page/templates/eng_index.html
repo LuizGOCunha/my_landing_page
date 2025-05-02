@@ -169,6 +169,14 @@
       
     </div>
   </div>
+  <br>
+
+  <div class="card">
+    <h2 style="text-align: center;">
+
+      <a href="#" id="openModal2" style="color: var(--accent); text-decoration: underline;">Contact Me!</a>
+    </h2>
+  </div>
 
 <div id="contactModal" class="modal">
   <div class="modal-content">
@@ -196,12 +204,15 @@
   <script>
     const modal = document.getElementById("contactModal");
     const btn = document.getElementById("openModal");
+    const btn2 = document.getElementById("openModal2");
     const span = document.getElementsByClassName("close")[0];
   
-    btn.onclick = function(event) {
+    const open_contacts = function(event) {
       event.preventDefault();
       modal.style.display = "block";
     }
+    btn.onclick = open_contacts;
+    btn2.onclick = open_contacts;
   
     span.onclick = function() {
       modal.style.display = "none";

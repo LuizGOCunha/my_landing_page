@@ -144,6 +144,49 @@
   color: black;
 }
 
+#my-gallery-container {
+      display: flex;
+      flex-direction: column;
+      font-family: sans-serif;
+      padding: 1em;
+    }
+
+    #my-gallery-header {
+      text-align: center;
+      margin-bottom: 2em;
+    }
+
+    .my-gallery-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2em;
+    }
+
+    .my-gallery-image-container {
+      flex: 1 1 300px;
+      max-width: 400px;
+      text-align: center;
+    }
+
+    .my-gallery-image-container img {
+      max-width: 100%;
+      height: auto;
+      width: 100%;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+
+    .my-gallery-image-title {
+      font-weight: bold;
+      margin: 0.5em 0 0.25em;
+    }
+
+    .my-gallery-image-description {
+      font-size: 0.9em;
+      color: #555;
+    }
+
   </style>
 </head>
 <body>
@@ -176,6 +219,26 @@
 
       <a href="#" id="openModal2" style="color: var(--accent); text-decoration: underline;">Contact Me!</a>
     </h2>
+  </div>
+
+  <div id="my-gallery-container">
+
+    <header id="my-gallery-header">
+      <h2>My Personal Projects</h2>
+    </header>
+
+    <main class="my-gallery-grid">
+      <div class="my-gallery-image-container">
+        {% for project_info in projects %}
+        <div class="my-gallery-image-title">{{ project_info.name}}</div>
+        <a href="{{ project_info.link }}">
+          <img src="noimage.jpg">
+        </a>
+        <div class="my-gallery-image-description">{{ project_info.description }}</div>
+        {% endfor %}
+      </div>
+    </main>
+
   </div>
 
 <div id="contactModal" class="modal">

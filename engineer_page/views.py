@@ -1,9 +1,18 @@
 from django.shortcuts import render
 from django.http import HttpRequest
 
+from .utils import gather_engineer_description, gather_engineer_projects
+
 
 def index(r: HttpRequest):
-    with open("eng_description.txt", "r") as description_file:
-        description = description_file.read()
-        paragraphs = description.split("\n")
-    return render(r, "eng_index.html", {"paragraphs": paragraphs})
+    paragraphs = gather_engineer_description()
+    projects_info = gather_engineer_projects()
+
+    return render(
+        r,
+        "eng_index.html",
+        {
+            "paragraphs": paragraphs,
+            "projects": projects_info,
+        },
+    )

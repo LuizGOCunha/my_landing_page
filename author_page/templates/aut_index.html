@@ -1,0 +1,28 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Centered Responsive Image</title>
+  <style>
+    html, body {
+      margin: 0;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #f0f0f0; /* optional background */
+    }
+
+    img {
+      max-width: 90%;
+      max-height: 90%;
+      height: auto;
+      width: auto;
+    }
+  </style>
+</head>
+<body>
+  <img src="{% static 'under_construction.jpg' %}" alt="Centered Image">
+</body>
+</html>

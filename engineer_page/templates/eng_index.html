@@ -6,188 +6,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Luiz, the Engineer</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <style>
-    :root {
-      --bg: #f9f9f9;
-      --text: #222;
-      --accent: #005f73;
-      --card: #ffffff;
-    }
+  <link rel="stylesheet" href="{% static 'eng_index_style.css' %}"/>
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      background-color: var(--bg);
-      color: var(--text);
-      padding: 2rem;
-    }
-
-    header {
-      text-align: center;
-      margin-bottom: 3rem;
-    }
-
-    header h1 {
-      font-size: 5rem;
-      color: var(--accent);
-      letter-spacing: 1px;
-    }
-
-    .card {
-      max-width: 900px;
-      background-color: var(--card);
-      margin: 0 auto;
-      padding: 2rem;
-      border-radius: 16px;
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
-    }
-
-    .profile-image {
-      float: left;
-      width: 320px;
-      height: auto;
-      margin-right: 2rem;
-      margin-bottom: 1rem;
-      border-radius: 12px;
-      object-fit: cover;
-    }
-
-    .description {
-      font-size: 1.125rem;
-      line-height: 1.9;
-      overflow: hidden; /* clears float if needed */
-    }
-
-    .description p {
-      margin-bottom: 1.5rem;
-    }
-
-    @media (max-width: 768px) {
-      .profile-image {
-        float: none;
-        display: block;
-        margin: 0 auto 2rem auto;
-      }
-    }
-
-    .modal {
-  display: none;
-  position: fixed;
-  z-index: 10;
-  padding-top: 100px;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-  background-color: rgba(0,0,0,0.4);
-}
-
-.modal-content {
-  background-color: white;
-  margin: auto;
-  padding: 2rem;
-  border: 1px solid #888;
-  width: 80%;
-  max-width: 400px;
-  border-radius: 12px;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-}
-
-.modal-content h2 {
-  margin-bottom: 1rem;
-  color: var(--accent);
-}
-
-.modal-content ul {
-  list-style: none;
-  padding: 0;
-}
-
-.modal-content li {
-  margin-bottom: 1rem;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-size: 1.1rem;
-}
-.modal-content i {
-  color: var(--accent);
-  width: 1.25rem;
-  text-align: center;
-}
-
-
-.modal-content a {
-  color: var(--accent);
-  text-decoration: none;
-}
-
-.modal-content a:hover {
-  text-decoration: underline;
-}
-
-.close {
-  color: #aaa;
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
-  cursor: pointer;
-}
-
-.close:hover {
-  color: black;
-}
-
-#my-gallery-container {
-      display: flex;
-      flex-direction: column;
-      font-family: sans-serif;
-      padding: 1em;
-    }
-
-    #my-gallery-header {
-      text-align: center;
-      margin-bottom: 2em;
-    }
-
-    .my-gallery-grid {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 2em;
-    }
-
-    .my-gallery-image-container {
-      flex: 1 1 300px;
-      max-width: 400px;
-      text-align: center;
-    }
-
-    .my-gallery-image-container img {
-      max-width: 100%;
-      height: auto;
-      width: 100%;
-      object-fit: cover;
-      border-radius: 8px;
-    }
-
-    .my-gallery-image-title {
-      font-weight: bold;
-      margin: 0.5em 0 0.25em;
-    }
-
-    .my-gallery-image-description {
-      font-size: 0.9em;
-      color: #555;
-    }
-
-  </style>
 </head>
 <body>
   <header>
@@ -227,17 +47,21 @@
       <h2>My Personal Projects</h2>
     </header>
 
-    <main class="my-gallery-grid">
-      <div class="my-gallery-image-container">
-        {% for project_info in projects %}
-        <div class="my-gallery-image-title">{{ project_info.name}}</div>
-        <a href="{{ project_info.link }}">
-          <img src="noimage.jpg">
-        </a>
-        <div class="my-gallery-image-description">{{ project_info.description }}</div>
-        {% endfor %}
-      </div>
-    </main>
+    <div class="card">
+      <main class="my-gallery-grid">
+        <div class="my-gallery-container">
+          {% for project_info in projects %}
+          <div class="project-container">
+            <div class="my-gallery-title">{{ project_info.name}}</div>
+            <a class="my-gallery-link" href="{{ project_info.link }}">
+              <img class="my-galley-image" src="{% static 'github_icon.png' %}">
+            </a>
+            <div class="my-gallery-description">{{ project_info.description }}</div>
+          </div>
+          {% endfor %}
+        </div>
+      </main>
+    </div>
 
   </div>
 

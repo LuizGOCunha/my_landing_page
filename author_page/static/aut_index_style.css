@@ -1,0 +1,15 @@
+html, body {
+    margin: 0;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #f0f0f0; /* optional background */
+  }
+
+  img {
+    max-width: 90%;
+    max-height: 90%;
+    height: auto;
+    width: auto;
+  }

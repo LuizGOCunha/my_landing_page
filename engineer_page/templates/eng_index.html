@@ -5,103 +5,93 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Luiz, the Engineer</title>
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- FontAwesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <link rel="stylesheet" href="{% static 'eng_index_style.css' %}"/>
-
 </head>
-<body>
+<body class="bg-gray-50 text-gray-900 font-sans p-6">
 
-  <nav id="dashboard-nav">
-    <button class="dashboard-button">
-      <a href="#introduction" class="dashboard-link">Introduction</a>
-    </button>
-    <button class="dashboard-button">
-      <a href="#projects" class="dashboard-link">Projects</a>
-    </button>
-    <button class="dashboard-button">
-      <a href="#contact" class="dashboard-link">Contact</a>
-    </button>
+  <!-- Navigation -->
+  <nav class="bg-gray-800 text-white flex justify-center space-x-8 py-4 mb-8">
+    <a href="#introduction" class="text-lg hover:text-blue-400 transition">Introduction</a>
+    <a href="#projects" class="text-lg hover:text-blue-400 transition">Projects</a>
+    <a href="#contact" class="text-lg hover:text-blue-400 transition">Contact</a>
   </nav>
 
-  <header>
-    <h1>Hi, I'm Luiz!</h1>
+  <!-- Header -->
+  <header class="text-center mb-12">
+    <h1 class="text-5xl text-blue-800 font-bold tracking-wide">Hi, I'm Luiz!</h1>
   </header>
 
-  <div class="card">
-    <div class="description">
-      <img 
-        src="{% static 'portrait.jpg' %}" 
-        alt="Profile Picture" 
-        class="profile-image" 
-        width="3000" 
-        height="4500"
-      />
+  <!-- Profile Card -->
+  <div class="max-w-4xl mx-auto bg-white p-8 rounded-2xl shadow-lg mb-12 flex flex-col lg:flex-row items-start gap-8">
+    <img 
+      src="{% static 'portrait.jpg' %}" 
+      alt="Profile Picture" 
+      class="w-80 rounded-xl object-cover float-left mr-6 mb-4"
+    />
+    <div class="text-lg space-y-4">
       {% for paragraph in paragraphs %}
-      <p>{{ paragraph }}</p>
+        <p>{{ paragraph }}</p>
       {% endfor %}
       <p>
-        ...but <a href="#" id="openModal" style="color: var(--accent); text-decoration: underline;">feel free to ask!</a>
+        ...but 
+        <a href="#" id="openModal" class="text-blue-800 underline">feel free to ask!</a>
       </p>
-      
     </div>
   </div>
-  <br>
 
-  <div class="card">
-    <h2 style="text-align: center;">
-
-      <a href="#" id="openModal2" style="color: var(--accent); text-decoration: underline;">Contact Me!</a>
+  <!-- Contact Card -->
+  <div class="max-w-4xl mx-auto bg-white p-6 rounded-2xl shadow-lg text-center mb-12">
+    <h2 class="text-2xl font-semibold">
+      <a href="#" id="openModal2" class="text-blue-800 underline">Contact Me!</a>
     </h2>
   </div>
 
-  <div id="my-gallery-container">
-
-    <header id="my-gallery-header">
-      <h2>My Personal Projects</h2>
+  <!-- Gallery Section -->
+  <section id="projects" class="max-w-6xl mx-auto p-4">
+    <header class="text-center mb-8">
+      <h2 class="text-3xl font-bold text-blue-800">My Personal Projects</h2>
     </header>
-
-    <div class="card">
-      <main class="my-gallery-grid">
-        <div class="my-gallery-container">
-          {% for project_info in projects %}
-          <div class="project-container">
-            <div class="my-gallery-title">{{ project_info.name}}</div>
-            <a class="my-gallery-link" href="{{ project_info.link }}">
-              <img class="my-galley-image" src="{% static 'github_icon.png' %}">
-            </a>
-            <div class="my-gallery-description">{{ project_info.description }}</div>
-          </div>
-          {% endfor %}
-        </div>
-      </main>
+    <div class="flex flex-wrap justify-center gap-8">
+      {% for project_info in projects %}
+      <div class="bg-white rounded-xl shadow-md p-4 w-72 text-center space-y-2">
+        <h3 class="font-bold text-lg">{{ project_info.name }}</h3>
+        <a href="{{ project_info.link }}">
+          <img src="{% static 'github_icon.png' %}" alt="Project Link" class="h-12 w-12 mx-auto" />
+        </a>
+        <p class="text-sm text-gray-600">{{ project_info.description }}</p>
+      </div>
+      {% endfor %}
     </div>
+  </section>
 
+  <!-- Modal -->
+  <div id="contactModal" class="hidden fixed inset-0 bg-black bg-opacity-40 z-50 flex items-center justify-center">
+    <div class="bg-white p-6 rounded-xl shadow-lg w-full max-w-md relative">
+      <button class="absolute top-4 right-4 text-gray-500 text-2xl hover:text-black" onclick="document.getElementById('contactModal').classList.add('hidden')">&times;</button>
+      <h2 class="text-2xl font-bold text-blue-800 mb-4">Talk to me!</h2>
+      <ul class="space-y-4 text-lg">
+        <li class="flex items-center gap-2">
+          <i class="fas fa-envelope text-blue-800"></i>
+          <a href="mailto:valuiz1@gmail.com" class="text-blue-800 hover:underline">valuiz1@gmail.com</a>
+        </li>
+        <li class="flex items-center gap-2">
+          <i class="fab fa-linkedin text-blue-800"></i>
+          <a href="https://www.linkedin.com/in/luiz-gustavo-oliveira-3a3623226/" target="_blank" class="text-blue-800 hover:underline">LinkedIn</a>
+        </li>
+        <li class="flex items-center gap-2">
+          <i class="fas fa-phone text-blue-800"></i>
+          <a href="tel:+5585974011007" class="text-blue-800 hover:underline">+55 (85) 97401-1007</a>
+        </li>
+      </ul>
+    </div>
   </div>
 
-<div id="contactModal" class="modal">
-  <div class="modal-content">
-    <span class="close">&times;</span>
-    <h2>Talk to me!</h2>
-    <ul>
-      <li>
-        <i class="fas fa-envelope"></i>
-        <a href="mailto:valuiz1@gmail.com">valuiz1@gmail.com</a>
-      </li>
-      <li>
-        <i class="fab fa-linkedin"></i>
-        <a href="https://www.linkedin.com/in/luiz-gustavo-oliveira-3a3623226/" target="_blank">LinkedIn</a>
-      </li>
-      <li>
-        <i class="fas fa-phone"></i>
-        <a href="tel:+5585974011007">+55 (85) 97401-1007</a>
-      </li>
-    </ul>
-  </div>
-</div>
+<script src="{% static 'contact_popup.js' %}"></script>
 
-  
-
-  <script src="{% static 'contact_popup.js' %}"></script>
-  
 </body>
 </html>

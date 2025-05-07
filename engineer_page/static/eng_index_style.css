@@ -15,7 +15,29 @@
     font-family: 'Segoe UI', sans-serif;
     background-color: var(--bg);
     color: var(--text);
-    padding: 2rem;
+  }
+
+  .dashboard-button {
+    background-color: black;
+  }
+
+  #dashboard-nav {
+    display: flex;
+    justify-content: center;
+    background-color: #333;
+    padding: 1rem 0;
+  }
+
+  .dashboard-link {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 2rem;
+    font-size: 2rem;
+    transition: color 0.3s ease;
+  }
+
+  .dashboard-link:hover {
+    color: #00bfff;
   }
 
   header {
@@ -188,4 +210,3 @@ color: black;
     font-size: 0.9em;
     color: #555;
   }
-
